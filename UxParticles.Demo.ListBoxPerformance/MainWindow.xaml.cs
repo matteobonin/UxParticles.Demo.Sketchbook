@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 
 namespace UxParticles.Demo.ListBoxPerformance
 {
+    using System.Windows.Interop;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -23,6 +25,14 @@ namespace UxParticles.Demo.ListBoxPerformance
         public MainWindow()
         {
             InitializeComponent();
+
+            this.Width = 1920;
+            this.Height = 1080;
+            RenderOptions.ProcessRenderMode = RenderMode.SoftwareOnly;
+
+            this.DataContext = new MainWindowViewModel();            
         }
     }
+
+
 }

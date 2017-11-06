@@ -4,9 +4,25 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UxParticles.Demo.ListBoxPerformance"
+        xmlns:controls="clr-namespace:UxParticles.Demo.ListBoxPerformance.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
+    <Grid Name="RootGrid">
+        <Grid.Resources>
+            <Style x:Key="DefaultCellStyleBase0" TargetType="TextBlock">
+                <Setter Property="Width" Value="65"/>
+                <Setter Property="TextAlignment" Value="Right"/>
+                <Setter Property="Background" Value="#D3FDFFAA"/>
+            </Style>
+            <Style x:Key="DefaultCellStyleBase1" TargetType="TextBlock" BasedOn="{StaticResource DefaultCellStyleBase0}">
+                <Setter Property="FontFamily" Value="Segoe UI"/>
+
+            </Style>
+            <Style x:Key="DefaultCellStyle" TargetType="TextBlock" BasedOn="{StaticResource DefaultCellStyleBase1}">
+                <Setter Property="FontWeight" Value="Bold"/>
+              
+            </Style>
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -19,13 +35,28 @@
         <DockPanel Grid.Row="1" LastChildFill="False">
             <TextBlock Text="{Binding Status}" DockPanel.Dock="Left" />
             <Button Content="Start" Command="{Binding StartCommand}" IsEnabled="{Binding CanStartCommand}"  DockPanel.Dock="Right" Width="80" Height="24" Margin="4"/>
+            <Button Content="Change columns" Command="{Binding ChangeColumnsCommand}" IsEnabled="{Binding CanStartCommand}"  DockPanel.Dock="Right" MinWidth="80" Height="24" Margin="4"/>
+
         </DockPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" IsEnabled="{Binding CanStartCommand}" >
             <TextBlock Text="Options:"/>
         </StackPanel>
-
-        <ListBox Grid.Row="3" ItemsSource="{Binding Items}" Margin="4" BorderBrush="DarkBlue"/>
-
+        <Grid  Grid.Row="3" Name="Lev1Grid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+       <controls:ListBoxExtended
+            
+            Background="#53B6B9D5"
+                                DefaultTextBlockStyle="{StaticResource DefaultCellStyle}"
+                               
+                                ItemsSource="{Binding Items}"
+                                Margin="4"
+            BorderBrush="DarkBlue">
+            
+        </controls:ListBoxExtended>
+        </Grid>
     </Grid>
 </Window>
