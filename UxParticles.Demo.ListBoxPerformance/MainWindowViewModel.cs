@@ -10,7 +10,7 @@ namespace UxParticles.Demo.ListBoxPerformance
 {
     using System.Windows;
 
-    using UxParticles.Demo.Libs.Debug;
+    using UxParticles.Demo.Libs.Diagnostics;
 
     public class MainWindowViewModel : NotifyPropertyChangedEx
     {
