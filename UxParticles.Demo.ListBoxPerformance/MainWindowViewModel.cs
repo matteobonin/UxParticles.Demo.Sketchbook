@@ -69,7 +69,7 @@ namespace UxParticles.Demo.ListBoxPerformance
             this.CanStart = false;
             this.Status = "Running...";
             var items = new List<DemoItem>();
-            var columnCount = 52;
+            var columnCount = 32;
             Task.Run(
                 () =>
                     {
@@ -92,12 +92,12 @@ namespace UxParticles.Demo.ListBoxPerformance
                                         {
                                             App.Current.Dispatcher.Log("Items", ms => this.Status = $"Done in {ms} ms");
                                             this.CanStart = true;
-                                            this.Items.Clear();
-                                            foreach (var demoItem in items)
-                                            {
-                                              this.Items.Add(demoItem);  
-                                            }
-                                            //this.Items = new ObservableCollection<DemoItem>(items);
+                                            //this.Items.Clear();
+                                            //foreach (var demoItem in items)
+                                            //{
+                                            //  this.Items.Add(demoItem);  
+                                            //}
+                                            this.Items = new ObservableCollection<DemoItem>(items);
                                             this.Columns = this.Items.FirstOrDefault()?.Widths;
                                             this.Status = "Done!";
                                         });
